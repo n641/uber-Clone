@@ -9,6 +9,8 @@ import retrofit2.http.Url
 object ServiceBuilder {
     private val BASE_URL =
         "https://api.npoint.io";
+//    private val BASE_URL =
+//        "https://api.npoint.io";
     private val client =OkHttpClient.Builder().build()
     val key ="67c1f5f8ad1f5085ec60";
      private val retrofit = Retrofit.Builder()
