@@ -4,7 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 class ApiResponse (
     @SerializedName("Rides" ) var Rides : ArrayList<Rides> = arrayListOf()
-
 )
 
 data class Rides (

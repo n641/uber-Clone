@@ -27,7 +27,7 @@ class listOfRides : AppCompatActivity() {
 
     lateinit var binding :ActivityListOfRidesBinding
     var data =ArrayList<com.example.loginscreen.Api.Rides>()
-    var dummy = DummyData()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -57,7 +57,12 @@ class listOfRides : AppCompatActivity() {
                     val responseBody = response.body()!!
 
                         data = responseBody.Rides
-                        val adapter=RidesAdapter(data)
+                        var filterData = ArrayList<com.example.loginscreen.Api.Rides>()
+                    for (x in data) {
+                        if(x.from =="Giza" && x.to=="Cairo")
+                            filterData.add(x)
+                    }
+                        val adapter=RidesAdapter(filterData)
                         binding.recyclerView.adapter =adapter
 
                 }catch (ex: java.lang.Exception){

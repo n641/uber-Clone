@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.loginscreen">
 
-     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -12,11 +13,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginScreen">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Data.testNotify"
+            android:exported="false">
+
+        </activity>
+        <activity
             android:name=".TestApiScreen"
             android:exported="false" />
         <activity
             android:name=".listOfRides"
-            android:exported="true">
+            android:exported="false" />
+        <activity
+            android:name=".Home"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,16 +37,11 @@
         </activity>
 
         <activity
-            android:name=".Home"
-            android:exported="false"/>
-        <activity
             android:name=".SignInScreen"
             android:exported="false" />
         <activity
             android:name=".SignUp"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
     </application>
 
 </manifest>

@@ -17,7 +17,6 @@
 
         >
 
-<!--        <include layout="@layout/header" />-->
 
         <ScrollView
             android:layout_width="match_parent"
@@ -122,7 +121,7 @@
                 >
 
                 <EditText
-                    android:id="@+id/PasswordLoginTF"
+                    android:id="@+id/TFfrom"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="40dp"
@@ -151,7 +150,7 @@
                     app:tint="@color/black" />
 
                 <EditText
-                    android:id="@+id/n"
+                    android:id="@+id/TFto"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginBottom="20dp"
