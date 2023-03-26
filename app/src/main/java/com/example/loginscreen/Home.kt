@@ -16,12 +16,12 @@ class Home : AppCompatActivity() {
         TFfrom = findViewById(R.id.TFfrom)
         TFto = findViewById(R.id.TFto)
         searchBtn =findViewById(R.id.searchBtn)
-        searchBtn.setOnClickListener {
 
-            var intent = Intent(this , listOfRides::class.java)
-            intent.putExtra("from" , TFfrom.text)
-            intent.putExtra("to" , TFto.text)
-            startActivity(intent)
+        searchBtn.setOnClickListener {
+            var intent1 = Intent(this , listOfRides::class.java)
+            intent1.putExtra("from" , TFfrom.text)
+            intent1.putExtra("to" , TFto.text)
+            startActivity(intent1)
         }
 
     }

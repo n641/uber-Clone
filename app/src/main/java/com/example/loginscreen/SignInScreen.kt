@@ -6,7 +6,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-
+import android.widget.Toast
+import com.example.loginscreen.databinding.LoginScreenBinding
+import com.example.loginscreen.databinding.SignupScreensBinding
+import com.google.firebase.auth.FirebaseAuth
 
 
 class SignInScreen : AppCompatActivity() {
@@ -16,35 +19,50 @@ class SignInScreen : AppCompatActivity() {
     lateinit var EmailTF : EditText;
     lateinit var PasswordTF : EditText;
 
+    lateinit var binding: LoginScreenBinding
+    lateinit var firebaseAuth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login_screen)
+        binding = LoginScreenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        LoginBtn =findViewById(R.id.loginBtn)
-        EmailTF = findViewById(R.id.userNameLoginTF)
-        PasswordTF = findViewById(R.id.PasswordLoginTF)
-        SignUpText = findViewById(R.id.textSignUp)
+        firebaseAuth = FirebaseAuth.getInstance()
 
-        LoginBtn.setOnClickListener {
-//            if(EmailTF.text.toString()=="" ){
-//                EmailTF.error="fill email";
-//            }
-//            if(PasswordTF.text.toString()==""){
-//                PasswordTF.error="fill email";
-//            }
-//            var intent :Intent = Intent(this , )
+        binding.loginBtn.setOnClickListener {
+            val email = binding.EmailLoginTF.text.toString()
+            val pass = binding.PasswordLoginTF.text.toString()
+
+            if(email.isNotEmpty() && pass.isNotEmpty() ){
+
+                    firebaseAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener {
+                        if(it.isSuccessful){
+                            var intent = Intent(this , Home::class.java)
+                            startActivity(intent)
+                        }else{
+                            Toast.makeText(this , it.exception.toString() , Toast.LENGTH_SHORT).show()
+                            println(it.exception.toString())
+                        }
+                    }
+
+            }else if(email.isEmpty()){
+                Toast.makeText(this , "enter email" , Toast.LENGTH_SHORT).show()
+
+            }else if(pass.isEmpty()){
+                Toast.makeText(this , "enter username" , Toast.LENGTH_SHORT).show()
+
+            }
+
         }
 
-        SignUpText.setOnClickListener {
+        binding.textSignUp.setOnClickListener {
 
             var intent = Intent(this , SignUp::class.java)
             startActivity(intent)
         }
 
-        LoginBtn.setOnClickListener {
+        binding.google.setOnClickListener {
 
-            var intent = Intent(this , Home::class.java)
-            startActivity(intent)
         }
 
 

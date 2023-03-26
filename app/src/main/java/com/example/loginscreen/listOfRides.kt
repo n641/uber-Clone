@@ -1,8 +1,10 @@
 package com.example.loginscreen
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.StrictMode
 import android.os.StrictMode.VmPolicy
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,11 +27,20 @@ class listOfRides : AppCompatActivity() {
     lateinit var RidesArray : ArrayList<Rides>;
 
 
+    lateinit var buyticket : Button;
     lateinit var binding :ActivityListOfRidesBinding
+    lateinit var intent1 : Intent ;
     var data =ArrayList<com.example.loginscreen.Api.Rides>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        var from = intent.getStringExtra("from")
+        var to = intent.getStringExtra("to")
+        intent1 = Intent(this , Details_page::class.java)
+
+        println("from")
+        println(from)
 
         StrictMode.setVmPolicy(
             VmPolicy.Builder(StrictMode.getVmPolicy())
@@ -42,6 +53,8 @@ class listOfRides : AppCompatActivity() {
         binding.recyclerView.layoutManager=LinearLayoutManager(this)
         getAllRides();
 //        setRidesRecylerView(getAllRides());
+
+
     }
 
 
@@ -58,12 +71,19 @@ class listOfRides : AppCompatActivity() {
 
                         data = responseBody.Rides
                         var filterData = ArrayList<com.example.loginscreen.Api.Rides>()
-                    for (x in data) {
-                        if(x.from =="Giza" && x.to=="Cairo")
-                            filterData.add(x)
-                    }
-                        val adapter=RidesAdapter(filterData)
+
+
+//                    for (x in data) {
+//                        if(x.from == from && x.to == to)
+//                            filterData.add(x)
+//                    }
+                        val adapter=RidesAdapter(data)
                         binding.recyclerView.adapter =adapter
+
+                        buyticket = findViewById(R.id.buyTicket);
+                        buyticket.setOnClickListener {
+                            startActivity(intent1)
+                        }
 
                 }catch (ex: java.lang.Exception){
                         ex.printStackTrace()

@@ -28,16 +28,17 @@ class Notification_Manager {
 
             builder = Notification.Builder(context, channelId)
                 .setContent(contentView)
-                .setSmallIcon(R.drawable.ic_launcher_background)
-                .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.drawable.ic_launcher_background))
+                .setSmallIcon(R.drawable.ic_baseline_access_time_24)
+                .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.drawable.ic_baseline_add_location_24))
                 .setContentIntent(pendingIntent)
+
 
         } else {
 
             builder = Notification.Builder(context)
                 .setContent(contentView)
-                .setSmallIcon(R.drawable.ic_launcher_background)
-                .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.drawable.ic_launcher_background))
+                .setSmallIcon(R.drawable.ic_baseline_access_time_24)
+                .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.drawable.ic_baseline_add_location_24))
                 .setContentIntent(pendingIntent)
         }
         notificationManager.notify(1234, builder.build())

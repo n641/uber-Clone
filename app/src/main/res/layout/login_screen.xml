@@ -39,14 +39,14 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/userNameLoginTF"
+                android:id="@+id/EmailLoginTF"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/custome_edittext"
                 android:drawableLeft="@drawable/ic_baseline_person_24"
                 android:drawablePadding="8dp"
-                android:hint="userName"
+                android:hint="Email"
                 android:drawableTint="@color/black"
                 android:padding="8dp"
                 android:textColor="@color/black"
@@ -91,6 +91,16 @@
         android:textColor="@color/purpul"
         android:layout_marginBottom="20dp"
         />
+
+    <ImageView
+        android:id="@+id/google"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/images" />
+
+
 
 
 </LinearLayout>
